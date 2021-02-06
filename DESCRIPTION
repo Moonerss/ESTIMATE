@@ -1,0 +1,21 @@
+Package: ESTIMATE
+Type: Package
+Title: A modified version of ESTIMATE package
+Version: 0.1.0
+Authors@R: 
+  person(given = "Erjie", 
+         family = "Zhao", 
+         email = "2055469819@qq.com",
+         role = c("aut", "cre"))
+Maintainer: Erjie Zhao <2055469819@qq.com>
+Description: Estimation of STromal and Immune cells in MAlignant Tumor tissues using Expression data.
+License: CC0
+Encoding: UTF-8
+LazyData: true
+Depends: 
+    R (>= 2.10)
+Imports: 
+    ggplot2,
+    patchwork,
+    utils
+RoxygenNote: 7.1.1

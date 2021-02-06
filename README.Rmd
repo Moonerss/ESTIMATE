@@ -1,0 +1,62 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# ESTIMATE
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of ESTIMATE is to predict tumor purity, and the presence of stromal/immune cells in
+tumor tissues using gene expression data.
+
+## Installation
+
+You can install the released version of ESTIMATE from [github](https://CRAN.R-project.org) with:
+
+``` r
+install.packages("devtools")
+devtools::install_github("Moonerss/ESTIMATE")
+```
+
+## Example
+
+use the function to do the ESTIMATE analysis:
+
+```{r example}
+library(ESTIMATE)
+
+## read expression profile
+file <- system.file("extdata", "sample_input.txt", package="ESTIMATE")
+expression <- read.table(file, header = TRUE, stringsAsFactors = FALSE)
+
+## Intersect input data with 10,412 common genes
+merged_expr <- filterCommonGenes(expr = data.matrix(expression), id = "GeneSymbol")
+
+## Calculation of stromal, immune, and ESTIMATE scores
+scores <- estimateScore(merged_expr, platform = "affymetrix")
+```
+
+
+```{r cars}
+head(scores)
+```
+
+plot the tumor purity scatterplots:
+
+```{r plot}
+pic <- plotPurity(scores)
+pic
+```
+
